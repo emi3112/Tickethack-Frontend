@@ -56,7 +56,7 @@ nav a {
   margin-right: 10px;
 }
 
-/*SECTION*/
+/*SECTION HOME*/
 
 #title {
   grid-row-start: 2;
@@ -113,6 +113,10 @@ h2 {
   color: rgba(133, 133, 133);
 }
 
+#search input:hover{
+    background-color: #c5c5c5;
+}
+
 #search span {
   height: 1px;
   background-color: #c5c5c5;
@@ -140,6 +144,7 @@ h2 {
   grid-row-end: 11;
   grid-column-start: 8;
   grid-column-end: 11;
+  overflow: hidden;
 }
 
 #list img {
@@ -149,6 +154,36 @@ h2 {
 #list p {
   border-top: 3px #4da886 solid;
   padding-top: 15%;
+}
+
+/*SECTION PAGES*/
+section{
+    background-color: #ffffff;
+    grid-row-start: 5;
+    grid-row-end: 9;
+    grid-column-start: 3;
+    grid-column-end: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+section h1{
+    color: #000000;
+}
+
+#cost{
+    background-color: #01153F;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding: 5%;
+    border-radius: 5px;
+
 }
 
 /*RESULT*/
@@ -162,7 +197,7 @@ h2 {
   align-items: center;
 }
 
-.result span a {
+.result span a, #cost a {
   background-color: #4da886;
   border-radius: 5px;
   color: #ffffff;
