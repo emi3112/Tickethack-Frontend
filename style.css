@@ -22,7 +22,6 @@ a {
   display: grid;
   grid-template-rows: repeat(12, 1fr);
   grid-template-columns: repeat(12, 1fr);
-  
 }
 #containerPage {
   background-color: #f0f0f0;
@@ -150,4 +149,22 @@ h2 {
 #list p {
   border-top: 3px #4da886 solid;
   padding-top: 15%;
+}
+
+/*RESULT*/
+.result {
+  background-color: #f0f0f0;
+  padding: 3%;
+  border-radius: 5px;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.result span a {
+  background-color: #4da886;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 10%;
 }
