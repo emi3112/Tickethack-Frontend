@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*CONTAINER*/
+#container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("./images/background.jpg");
+  background-size: cover;
+  background-position: top;
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  
+}
+#containerPage {
+  background-color: #f0f0f0;
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  height: 100vh;
+}
+
+/*HEADER*/
+header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 2%;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 13;
+}
+
+#logo {
+  color: #4da886;
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+nav a {
+  color: #000000;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/*SECTION*/
+
+#title {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+h2 {
+  color: #ffffff;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+h2 {
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 3%;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+#search {
+  grid-row-start: 5;
+  grid-row-end: 11;
+  grid-column-start: 3;
+  grid-column-end: 6;
+}
+
+.tripSearch {
+  width: 80%;
+}
+
+#search input {
+  background-color: #f0f0f0;
+  border: 0;
+  border-radius: 5px;
+  padding: 3%;
+  font-family: "Poppins", sans-serif;
+  color: rgba(133, 133, 133);
+}
+
+#search span {
+  height: 1px;
+  background-color: #c5c5c5;
+  width: 98%;
+  margin-left: 1%;
+}
+
+#search button {
+  background-color: #4da886;
+  border: 0;
+  color: #ffffff;
+  width: 80%;
+  padding: 3%;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
+
+#tripContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#list {
+  grid-row-start: 5;
+  grid-row-end: 11;
+  grid-column-start: 8;
+  grid-column-end: 11;
+}
+
+#list img {
+  width: 35%;
+}
+
+#list p {
+  border-top: 3px #4da886 solid;
+  padding-top: 15%;
+}
