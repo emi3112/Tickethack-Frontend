@@ -31,9 +31,9 @@ function getCarts() {
 			   	         My cart
 				    </h1>
 				        <div class="cartContainer">
-				  <span class="cities">${cart.departure} > ${cart.departure}</span>
-					<span class="hour"> ${cart.departure}</span>
-					<span class="price">${cart.departure}</span>  <span> $ </span>
+				  <span class="cities">${cart.departure} > ${cart.arrival}</span>
+					<span class="hour"> ${cart.date}</span>
+					<span class="price">${cart.price}</span>  <span> $ </span>
 					<button class="deleteCart">✖</button>
 				</div>
 				<div id="cost">
