@@ -35,14 +35,15 @@
           <input type="text" id="arrival" placeholder="Arrival" />
         </div>
         <input type="date" id="date" class="tripSearch" value="2023-04-11" />
-        <button type="submit">Search</button>
+        <button id='searchTrip' type="submit">Search</button>
       </div>
 
       <div id="list" class="card">
         <img src="./images/train.png" />
-        <p>It's time to book your future trip.</p>
+        <p id="tripNotFound">It's time to book your future trip.</p>
       </div>
 
+      <div id="resultContainer"></div>
       <!-- <div class="result">
             <span class="cities">Paris > Lyon</span>
             <span class="hour"> 16:23</span>
@@ -51,5 +52,6 @@
         </div> -->
         
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
