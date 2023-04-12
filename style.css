@@ -245,7 +245,7 @@ section h1{
   /* flex-wrap: wrap; */
 }
 
-.result span a, .deleteCart, .addTrip {
+span a, .deleteCart, .addTrip {
   background-color: #4da886;
   border-radius: 5px;
   color: #ffffff;
@@ -253,7 +253,7 @@ section h1{
   border: 0;
 }
 
-#myCart{
+#myCart , #cart{
     width: 100%;
     display: flex;
     flex-direction: column;
