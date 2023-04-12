@@ -60,7 +60,7 @@ document.querySelector(".addTrip").addEventListener("click", function () {
         document.querySelector("#cartContainer").innerHTML += `
         <span class="cities">${tripCities}</span>
         <span class="hour">${tripHour}</span>
-        <span class="price">${tripHour}</span>
+        <span class="price">${tripPrice}</span>
         <button class="deleteCart">✖</button>`
         document.querySelector("#count").textContent = priceCount
         //DELETE
@@ -70,8 +70,8 @@ document.querySelector(".addTrip").addEventListener("click", function () {
               this.parentNode.remove();
               return (document.querySelector("#count").textContent =
                 priceCount -= priceCount);
-            });
+            })
         }
       }
-    });
-});
+    })
+})
