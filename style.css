@@ -184,7 +184,12 @@ section h1{
     justify-content: space-between;
 }
 
+
 #pageContainer p{
+    padding: 3%;
+}
+
+#bottomMessage{
     margin-bottom: 5%;
     color: #4da886;
     border-top: 3px #4da886 solid;
