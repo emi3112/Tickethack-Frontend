@@ -6,16 +6,23 @@ function showTrips(data) {
         for(let trip of data.trips) {
     
             console.log('FOR FONCTION', trip);
+
+            const hours = new Date(trip.date).getHours()
+            const minutes = new Date(trip.date).getMinutes()
+
+            const date = `${hours}:${minutes}`
     
             document.querySelector('#resultContainer').innerHTML += `
             <div class="result">
         <span class="cities">${trip.departure} > ${trip.arrival}</span>
-        <span class="hour"> ${trip.date}</span>
+        <span class="hour"> ${date}</span>
         <span class="price">${trip.price}$</span>
-        <span class="addTrip">Book</span>
+        <span class="addTrip" id="${trip.date}">Book</span>
     </div>`
             
         }
+
+        // fonction change page boutton
     } else {
 
         console.log('ELSE FONCTION');
@@ -27,6 +34,16 @@ function showTrips(data) {
         </div>`
     }
 }
+
+
+// function buttonCart() {
+//     let buttons = document.querySelectorAll('.addTrip')
+//     for(let i = 0; i < buttons.length; i ++) {
+//         buttons[i].addEventListener('click' function() {
+
+//         })
+//     }
+// }
 
 
 document.querySelector('#searchTrip').addEventListener('click', function() {
