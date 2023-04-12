@@ -23,19 +23,21 @@ fetch('http://localhost:3000/carts/showCarts').then(response => response.json())
 
 		document.querySelector('#pageContainer').innerHTML = `
 		<div id="myCart">
-				<h1>
-					My cart
-				</h1>
-				<div id="cart"></div>
-				<div id="cost">
-					<div id="total">
-						<span>Total</span>
-						<span id="count"> 103 </span>  <span> $ </span>
-				</div>
-				</div>
-					<span><a href="booking.html">Purchase</a></span>
-				</div>
-			</div> `
+			<h1>
+				My cart
+			</h1>
+
+			<div id="cart"></div>
+
+			<div id="cost">
+			    <div id="total">
+					<span>Total</span>
+					<span id="count"> 103 </span>  <span> $ </span>
+			</div>
+			    <span><a href="booking.html">Purchase</a></span>
+			</div>
+			</div>
+		</div> `
 
 
 		for(let cart of data.carts) {
@@ -44,7 +46,7 @@ fetch('http://localhost:3000/carts/showCarts').then(response => response.json())
                 <span class="cities">${cart.departure} > ${cart.arrival}</span>
                 <span class="hour"> ${cart.date}</span>
                 <span class="price">${cart.price}</span>  <span> $ </span>
-                <button class="deleteCart">✖</button>
+                <button class="deleteCart" id="${cart.date}" >✖</button>
             </div> `
 		}
 		deleteCart()
