@@ -214,7 +214,7 @@ section h1{
 }
 
 /*RESULT*/
-.result {
+.result, .cartContainer {
   background-color: #f0f0f0;
   padding: 3%;
   border-radius: 5px;
@@ -225,9 +225,10 @@ section h1{
   margin-bottom: 5%;
 }
 
-.result span a {
+.result span a, .deleteCart, .addTrip {
   background-color: #4da886;
   border-radius: 5px;
   color: #ffffff;
   padding: 5px 10px;
+  border: 0;
 }
