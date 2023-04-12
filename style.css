@@ -238,6 +238,21 @@ section h1{
   /* flex-wrap: wrap; */
 }
 
+.result {
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3%;
+  background-color: #f0f0f0;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  font-size: 12px;
+  /* gap: 5px; */
+  /* flex-wrap: wrap; */
+}
+
 .result span a, .deleteCart, .addTrip {
   background-color: #4da886;
   border-radius: 5px;
