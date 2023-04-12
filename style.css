@@ -214,11 +214,7 @@ section h1{
 }
 
 /*RESULT*/
-#resultContainer {
-  width: 100%;
-}
-
-.result, .cartContainer {
+.result {
   background-color: #f0f0f0;
   padding: 3%;
   border-radius: 5px;
