@@ -31,8 +31,6 @@ function showTrips(data) {
 
 document.querySelector('#searchTrip').addEventListener('click', function() {
 
-    // document.querySelectorAll('#result').remove()
-
 	const departure = document.querySelector('#departure').value
     const arrival = document.querySelector('#arrival').value
 	const dateReq = document.querySelector('#date').value
