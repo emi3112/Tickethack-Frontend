@@ -214,11 +214,8 @@ section h1{
 }
 
 /*RESULT*/
-.result {
-  background-color: #f0f0f0;
-  padding: 3%;
-  border-radius: 5px;
-  width: 80%;
+#resultContainer {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
