@@ -34,7 +34,7 @@ fetch('http://localhost:3000/carts/showCarts').then(response => response.json())
 					<span>Total</span>
 					<span id="count"> 103 </span>  <span> $ </span>
 			</div>
-			    <span><a href="booking.html">Purchase</a></span>
+			    <a href="booking.html">Purchase</a>
 			</div>
 			</div>
 		</div> `
