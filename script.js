@@ -42,8 +42,10 @@ document.querySelector('#searchTrip').addEventListener('click', function() {
             <span class="cities">${trip.departure} > ${trip.arrival}</span>
             <span class="hour"> ${trip.date}</span>
             <span class="price">${trip.price}$</span>
-            <span><a href="cart.html">Book</a></span>
-        </div>`
+            <span class="addTrip">Book</span>
+                </div>`
+
+
                 
             }
         } else {

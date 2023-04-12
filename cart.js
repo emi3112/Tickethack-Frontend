@@ -1,77 +1,42 @@
 let priceCount = document.querySelectorAll(".price").value;
 
-//CREATE CART
-/*fetch("http://localhost:3000/searchTrips")
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.Trips) {
-      for (let i = 0; i < data.Trips.length; i++) {
-        document.querySelector("#cartContainer").innerHTML += `
-            <div class="cartContainer">
-            <span class="cities">${data.Trips[i].departure} > ${data.Trips[i].arrival}</span>
-            <span class="hour"> 16:23</span>
-            <span class="price">${data.Trips[i].price}$</span>
-            <button class="deleteCart" id="${data.Trips[i].departure}" >✖</button>
-           </div>`
+function deleteCart() {
+	for (let i = 0; i < document.querySelectorAll('.deleteCart').length; i++) {
+		document.querySelectorAll('.deleteCart')[i].addEventListener('click', function () {
+			fetch(`http://localhost:3000/carts/deleteCart/${this.id}`, { method: 'DELETE' })
+				.then(response => response.json())
+				.then(data => {
+					if (data.result) {
+						this.parentNode.remove();
+					}
+				});
+		});
+	}
+}
+
+for (let i = 0; i < document.querySelectorAll('.addTrip').length; i++) {
+    document.querySelectorAll('.addTrip')[i].addEventListener('click',
+      function () {
+        console.log(this);
+        const date = document.querySelector('.hour').value;
+    window.location.assign('cart.html')
+
+
+	fetch('http://localhost:3000/carts', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({date}),
+	}).then(response => response.json())
+		.then(data => {
+				document.querySelector('#cartContainer').innerHTML += `
+                <span class="cities">${data.carts.departure} > ${data.carts.arrival}</span>
+                <span class="hour"> ${data.carts.date}</span>
+                <span class="price">${data.carts.price}$</span>
+                <button class="deleteCart" id='${data.carts.date}'>✖</button>`;
+            deleteCart();
+		});
       }
-      deleteCart()
-    }
-  });*/
+    );
+   }
 
-//DELETE TRIP
-/*function deleteCart() {
-  for (let i = 0; i < document.querySelectorAll(".deleteCart").length; i++) {
-    document
-      .querySelectorAll(".deleteCart")
-      [i].addEventListener("click", function () {
-        fetch(`http://localhost:3000/trips/searchTrips/${this.id}`, {
-          method: "DELETE",
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.result) {
-              this.parentNode.remove();
-              return (document.querySelector("#count").textContent =
-                priceCount);
-            }
-          });
-      });
-  }
-}*/
-
-//ADD CART
-document.querySelector(".addTrip").addEventListener("click", function () {
-  const tripCities = document.querySelector("#cities").value;
-  const tripHour = document.querySelector("#hour").value;
-  const tripPrice = document.querySelector("#price").value;
-
-  fetch("http://localhost:3000/searchTrips", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      departure: departure,
-      arrival: arrival,
-      date: date,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.result) {
-        document.querySelector("#cartContainer").innerHTML += `
-        <span class="cities">${tripCities}</span>
-        <span class="hour">${tripHour}</span>
-        <span class="price">${tripPrice}</span>
-        <button class="deleteCart">✖</button>`
-        document.querySelector("#count").textContent = priceCount
-        //DELETE
-        for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
-          document.querySelectorAll(".delete")
-            [i].addEventListener("click", function () {
-              this.parentNode.remove();
-              return (document.querySelector("#count").textContent =
-                priceCount -= priceCount);
-            })
-        }
-      }
-    })
-})
+	
