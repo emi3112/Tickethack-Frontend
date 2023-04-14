@@ -20,7 +20,8 @@ function deleteCart() {
         })
           .then((response) => response.json())
           .then((data) => {
-            if (data.result) {
+            if (data.result === true) {
+				console.log('MY DELETEEEEEE',data);
               this.parentNode.remove();
               return (document.querySelector("#count").textContent = basketValue -= parseFloat(basketValue[i].previousElementSibling.previousElementSibling.textContent));
 
@@ -28,10 +29,10 @@ function deleteCart() {
           });
       });
   }
-  cartHome()
 }
 
-function cartHome() {
+function newCart() {
+
 	
 	fetch('http://localhost:3000/carts/showCarts').then(response => response.json()).then( data => {
 		if(!data.carts.length) {
@@ -55,26 +56,18 @@ function cartHome() {
 			</div>
 		</div> `;
 
-      for (let cart of data.carts) {
-        document.querySelector("#cart").innerHTML += `
+        for (let cart of data.carts) {
+            document.querySelector("#cart").innerHTML += `
 			<div class="cartContainer">
                 <span class="cities">${cart.departure} > ${cart.arrival}</span>
                 <span class="hour"> ${cart.date}</span>
                 <span class="price">${cart.price}</span>  <span> $ </span>
                 <button class="deleteCart" id="${cart.date}" >✖</button>
             </div> `;
-      }
-      cartBasket();
-      //deleteCart();
-      
-    }
-  });}
-
-
-
-
-
-
-
-
-
+        }
+	    }
+	cartBasket();
+	deleteCart();
+    });
+}
+newCart()
