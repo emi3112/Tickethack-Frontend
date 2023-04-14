@@ -1,72 +1,93 @@
-function cartBasket() {
-  const basket = document.querySelectorAll(".price");
-  let basketValue = 0;
+// ================================================= CONSTANTE DIV ===============================================
 
-  for (let i = 0; i < basket.length; i++) {
-    basketValue += parseFloat(basket[i].textContent);
-  }
-  document.querySelector("#count").textContent = basketValue;
-  deleteCart();
+const newCartContainer = 
+`<div id="myCart">
+    <h1>
+        My cart
+    </h1>
+    <div id="cart"></div>
+        <div id="cost">
+	        <div id="total">
+		        <span>Total</span>
+		        <span id="count"> </span> <span> $ </span>
+            </div>
+	        <a href="booking.html">Purchase</a>
+        </div>
+    </div>
+</div> `
+
+const noDivCart = 
+`<p class="p0">No tickets in your cart.</p>
+<p class="p1">Why not plan a trip?</p>
+`
+
+// ===================================================== NEW CART DATA =====================================================
+
+function loopNewCart(data) {
+	for (let cart of data.carts) {
+		document.querySelector("#cart").innerHTML += `
+		<div class="cartContainer">
+			<span class="cities">${cart.departure} > ${cart.arrival}</span>
+			<span class="hour"> ${cart.date}</span>
+			<span class="price">${cart.price}</span>  <span> $ </span>
+			<button class="deleteCart" id="${cart.date}" >✖</button>
+		</div> `;
+	}
 }
+// =============================================== FETCH SI AFFICHE CARTS OU NO CARTS ======================================
+
+function newFetch() {
+	fetch('http://localhost:3000/carts/showCarts').then(response => response.json()).then( data => {
+		console.log('NEW FETCHHHHHH');
+		if(!data.carts.length) {
+			document.querySelector('#pageContainer').innerHTML = noDivCart
+		} else {
+			document.querySelector('#pageContainer').innerHTML = newCartContainer
+			loopNewCart(data)
+		}
+		deleteCart();
+	});
+}
+// newFetch()
+newFetch()
+
+
+
+// function cartBasket() {
+//     const basket = document.querySelectorAll(".price");
+//     let basketValue = 0;
+
+//     for (let i = 0; i < basket.length; i++) {
+//     basketValue += parseFloat(basket[i].textContent);
+//     }
+//     document.querySelector("#count").textContent = basketValue;
+//     deleteCart();
+// }
 
 
 function deleteCart() {
-  let buttonsDelete =  document.querySelectorAll(".deleteCart")
-  let counterDeleted = document.querySelector("#count").textContent
-  for (let i = 0; i < buttonsDelete.length; i++) {
-    buttonsDelete[i].addEventListener("click", function () {
-        fetch(`http://localhost:3000/carts/deleteCart/${this.id}`, {
-          method: "DELETE",
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.result === true) {
-				console.log('MY DELETEEEEEE',data);
-              this.parentNode.remove();
-              counterDeleted -= parseFloat(buttonsDelete[i].previousElementSibling.previousElementSibling.textContent);
-            }
-          });
-      });
-  }
+    let buttonsDelete =  document.querySelectorAll(".deleteCart")
+	console.log(buttonsDelete);
+    // let counterDeleted = document.querySelector("#count").textContent
+
+    for (let i = 0; i < buttonsDelete.length; i++) {
+        buttonsDelete[i].addEventListener("click", function () {
+        fetch(`http://localhost:3000/carts/deleteCart/${this.id}`, 
+		{method: "DELETE",})
+            .then((response) => response.json())
+            .then((data) => {
+				console.log('FETCHHHH DELETEEEE MY DATA ==> ', data);
+				console.log('DATA.length ====>', data.length);
+				console.log('THIS ===>', this);
+            if (data.result === true && data.length > 0) {
+					this.parentNode.remove();
+                // counterDeleted -= parseFloat(buttonsDelete[i].previousElementSibling.previousElementSibling.textContent);
+            } else {
+				document.querySelector('#pageContainer').innerHTML = noDivCart			}
+            });
+        });
+    }
 }
 
-function newCart() {
 
-	
-	fetch('http://localhost:3000/carts/showCarts').then(response => response.json()).then( data => {
-		if(!data.carts.length) {
-			document.querySelector('#pageContainer').innerHTML = `
-			<p class="p0">No tickets in your cart.</p>
-			<p class="p1">Why not plan a trip?</p>`
-		} else {
-			document.querySelector('#pageContainer').innerHTML = `
-			<div id="myCart">
-			<h1>
-			My cart
-			</h1>
-			<div id="cart"></div>
-			<div id="cost">
-			    <div id="total">
-					<span>Total</span>
-					<span id="count"> </span> <span> $ </span>
-			</div>
-			    <a href="booking.html">Purchase</a>
-			</div>
-			</div>
-		</div> `;
 
-        for (let cart of data.carts) {
-            document.querySelector("#cart").innerHTML += `
-			<div class="cartContainer">
-                <span class="cities">${cart.departure} > ${cart.arrival}</span>
-                <span class="hour"> ${cart.date}</span>
-                <span class="price">${cart.price}</span>  <span> $ </span>
-                <button class="deleteCart" id="${cart.date}" >✖</button>
-            </div> `;
-        }
-	    }
-	cartBasket();
-	deleteCart();
-    });
-}
-newCart()
