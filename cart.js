@@ -35,7 +35,7 @@ function cartHome() {
 			<span>Total</span>
 			<span id="count"> 103 </span>  <span> $ </span>
 			</div>
-			<span><a href="booking.html">Purchase</a></span>
+			    <a href="booking.html">Purchase</a>
 			</div>
 			</div>
 			</div> `
