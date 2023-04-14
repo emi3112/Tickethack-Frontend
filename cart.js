@@ -22,7 +22,7 @@ function deleteCart() {
           .then((data) => {
             if (data.result) {
               this.parentNode.remove();
-              return counterDeleted -= parseFloat(buttonsDelete[i].previousElementSibling.previousElementSibling.textContent);
+              counterDeleted -= parseFloat(buttonsDelete[i].previousElementSibling.previousElementSibling.textContent);
             }
           });
       });
