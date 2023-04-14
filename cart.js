@@ -11,10 +11,10 @@ function cartBasket() {
 
 
 function deleteCart() {
-  for (let i = 0; i < document.querySelectorAll(".deleteCart").length; i++) {
-    document
-      .querySelectorAll(".deleteCart")
-      [i].addEventListener("click", function () {
+  let buttonsDelete =  document.querySelectorAll(".deleteCart")
+  let counterDeleted = document.querySelector("#count").textContent
+  for (let i = 0; i < buttonsDelete.length; i++) {
+    buttonsDelete[i].addEventListener("click", function () {
         fetch(`http://localhost:3000/carts/deleteCart/${this.id}`, {
           method: "DELETE",
         })
@@ -23,8 +23,7 @@ function deleteCart() {
             if (data.result === true) {
 				console.log('MY DELETEEEEEE',data);
               this.parentNode.remove();
-              return (document.querySelector("#count").textContent = basketValue -= parseFloat(basketValue[i].previousElementSibling.previousElementSibling.textContent));
-
+              counterDeleted -= parseFloat(buttonsDelete[i].previousElementSibling.previousElementSibling.textContent);
             }
           });
       });
