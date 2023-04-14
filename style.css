@@ -245,7 +245,7 @@ section h1{
   /* flex-wrap: wrap; */
 }
 
-span a, .deleteCart, .addTrip {
+#purchaseButton, .deleteCart, .addTrip {
   background-color: #4da886;
   border-radius: 5px;
   color: #ffffff;
