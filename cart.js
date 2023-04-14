@@ -1,3 +1,15 @@
+function cartBasket() {
+  const basket = document.querySelectorAll(".price");
+  let basketValue = 0;
+
+  for (let i = 0; i < basket.length; i++) {
+    basketValue += parseFloat(basket[i].textContent);
+  }
+  document.querySelector("#count").textContent = basketValue;
+  deleteCart();
+}
+
+
 function deleteCart() {
   for (let i = 0; i < document.querySelectorAll(".deleteCart").length; i++) {
     document
@@ -16,20 +28,22 @@ function deleteCart() {
           });
       });
   }
+  cartHome()
 }
 
-fetch("http://localhost:3000/carts/showCarts")
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.carts) {
-      //console.log(data.carts);
-
-      document.querySelector(".p0").remove();
-      document.querySelector(".p1").remove();
-
-      document.querySelector("#pageContainer").innerHTML = `
-		<div id="myCart">
-			<h1>My cart</h1>
+function cartHome() {
+	
+	fetch('http://localhost:3000/carts/showCarts').then(response => response.json()).then( data => {
+		if(!data.carts.length) {
+			document.querySelector('#pageContainer').innerHTML = `
+			<p class="p0">No tickets in your cart.</p>
+			<p class="p1">Why not plan a trip?</p>`
+		} else {
+			document.querySelector('#pageContainer').innerHTML = `
+			<div id="myCart">
+			<h1>
+			My cart
+			</h1>
 			<div id="cart"></div>
 			<div id="cost">
 			    <div id="total">
@@ -54,15 +68,9 @@ fetch("http://localhost:3000/carts/showCarts")
       //deleteCart();
       
     }
-  });
+  });}
 
-function cartBasket() {
-  const basket = document.querySelectorAll(".price");
-  let basketValue = 0;
 
-  for (let i = 0; i < basket.length; i++) {
-    basketValue += parseFloat(basket[i].textContent);
-  }
-  document.querySelector("#count").textContent = basketValue;
-  deleteCart();
-}
+
+
+cartHome()
