@@ -10,12 +10,8 @@ function deleteCart() {
           .then((data) => {
             if (data.result) {
               this.parentNode.remove();
-              return (document.querySelector("#count").textContent =
-                basketValue -=
-                  Number(
-                    basketValue[i].previousElementSibling.previousElementSibling
-                      .textContent
-                  ));
+              return (document.querySelector("#count").textContent = basketValue -= parseFloat(basketValue[i].previousElementSibling.previousElementSibling.textContent));
+
             }
           });
       });
@@ -54,8 +50,9 @@ fetch("http://localhost:3000/carts/showCarts")
                 <button class="deleteCart" id="${cart.date}" >✖</button>
             </div> `;
       }
-      deleteCart();
       cartBasket();
+      //deleteCart();
+      
     }
   });
 
@@ -67,4 +64,5 @@ function cartBasket() {
     basketValue += parseFloat(basket[i].textContent);
   }
   document.querySelector("#count").textContent = basketValue;
+  deleteCart();
 }
