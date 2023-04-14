@@ -22,18 +22,8 @@ function buttonCart() {
             }).then(response => response.json())
                 .then(data => {
                     console.log(data);
-                        // document.querySelector('#cartContainer').innerHTML += `
-                        // <span class="cities">${data.carts.departure} > ${data.carts.arrival}</span>
-                        // <span class="hour"> ${data.carts.date}</span>
-                        // <span class="price">${data.carts.price}$</span>
-                        // <button class="deleteCart" id='${data.carts.date}'>✖</button>`;
-                    // deleteCart();
                     window.location.assign('cart.html')
                 });
-
-                
-                // declarer dep arr date price 
-                
             })
     }
 }
@@ -42,34 +32,25 @@ function buttonCart() {
 
 
 function showTrips(data) {
-    if(data.trips.length) {
-    
-        console.log('IF FONCTION', data.trips);
-    
+    if(data.trips.length) {    
         for(let trip of data.trips) {
     
             console.log('FOR FONCTION', trip);
 
             const hours = new Date(trip.date).getHours()
             const minutes = new Date(trip.date).getMinutes()
-
             const date = `${hours}:${minutes}`
+            console.log('MY DATE ===>',date);
     
             document.querySelector('#resultContainer').innerHTML += `
             <div class="result">
         <span class="cities">${trip.departure}</span> <span> > </span> <span>${trip.arrival}</span>
-        <span class="hour"> ${date}</span>
+        <span class="hour">${date}</span>
         <span class="price">${trip.price}</span>  <span> $ </span>
         <span class="addTrip" id="${trip.date}">Book</span>
     </div>`
-            
         }
-
-        // buttonCart()
-
-        // fonction change page boutton
     } else {
-
         console.log('ELSE FONCTION');
         document.querySelector('#list').innerHTML = `
         <div id="list" class="card">
